@@ -1,3 +1,3 @@
-import { RandomPageRedirect } from "../components/RandomPageRedirect/RandomPageRedirect";
+import { RandomPageRedirect } from "../components/RandomPageRedirect";
 
 export default RandomPageRedirect;

@@ -1,6 +1,6 @@
 import { navigate } from "gatsby";
 import React, { useEffect } from "react";
-import { useInternalPaths } from "../../hooks/useInternalPaths";
+import { useInternalPaths } from "../hooks/useInternalPaths";
 
 export const RandomPageRedirect: React.FC = () => {
   const pathsExcludin404PagesOrHome = useInternalPaths().filter(
