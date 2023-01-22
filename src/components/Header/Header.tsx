@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <div className="hover-visibility"></div>
+      <div className="hover-visibility" aria-hidden></div>
       <header className={`header ${isPinned ? "hidden" : ""}`}>
         <div>
           <h1 className="title">Sayagata</h1>
@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
             className="control-button"
             onClick={() => setIsPinned(!isPinned)}
             title={isPinned ? "Pin the header" : "Hide the header"}
-            aria-label={isPinned ? "Pin the header" : "Hide the header"}
+            aria-hidden
           >
             {isPinned ? <PinIcon /> : <PinOffIcon />}
           </button>
