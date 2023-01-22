@@ -2,9 +2,9 @@ import React from "react";
 import { useSiteMetadata } from "./useMetadata";
 
 export const SEO: React.FC<{
-  title: string;
-  description: string;
-  pathname: string;
+  title?: string;
+  description?: string;
+  pathname?: string;
 }> = ({ title, description, pathname }) => {
   const {
     title: defaultTitle,
