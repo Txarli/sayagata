@@ -10,7 +10,7 @@
   margin-left: auto;
   margin-right: auto;
   padding: 16px;
-  width: 60%;
+  width: 100%;
 
   font-family: 'Montserrat', sans-serif;
 
@@ -30,6 +30,10 @@
   &.hidden:hover {
     visibility: visible;
     opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    width: 60%;
   }
 }
 
