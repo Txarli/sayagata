@@ -4,7 +4,7 @@ import PinOffIcon from "./icons/pin-off.svg";
 import RandomIcon from "./icons/random.svg";
 
 import "./Header.scss";
-import { useInternalPaths } from "../RandomPageRedirect/useInternalPaths";
+import { useInternalPaths } from "../../hooks/useInternalPaths";
 import { navigate } from "gatsby";
 
 interface Props {
