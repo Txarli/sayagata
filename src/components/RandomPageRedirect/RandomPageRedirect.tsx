@@ -13,7 +13,7 @@ export const RandomPageRedirect: React.FC = () => {
         Math.floor(Math.random() * pathsExcludin404PagesOrHome.length)
       ];
 
-    setTimeout(() => navigate(randomPath), 2000);
+    navigate(randomPath)
   });
 
   return null;
