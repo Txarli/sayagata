@@ -18,13 +18,13 @@ export const Header: React.FC = () => {
           </p>
         </div>
 
-        <div>
+        <div aria-hidden>
           <button
             type="button"
             className="control-button"
             onClick={() => setIsPinned(!isPinned)}
             title={isPinned ? "Pin the header" : "Hide the header"}
-            aria-hidden
+            tabIndex={-1}
           >
             {isPinned ? <PinIcon /> : <PinOffIcon />}
           </button>
