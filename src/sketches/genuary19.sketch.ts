@@ -1,4 +1,5 @@
-import P5, { Vector } from "p5";
+import type P5 from "p5";
+import { Vector } from "p5";
 
 export const sketch = (p5: P5) => {
   let angle = 0;
