@@ -29,6 +29,28 @@ export const sketch = (p5: P5) => {
   p5.draw = function () {
     p5.background(255);
 
+    p5.image(flowGraphics, 0, 0);
+
+    for (
+      let x = circleRadius * 2;
+      x < p5.width - circleRadius;
+      x += circleRadius * 3.5
+    ) {
+      for (
+        let y = circleRadius;
+        y < p5.height - circleRadius;
+        y += circleRadius
+      ) {
+        if (!deadCells.some((cell) => cell.x === x && cell.y === y)) {
+          drawHexagon(x, y);
+          if (p5.frameCount > 200 && p5.noise(x, y, znoise) > 0.64) {
+            deadCells.push({ x, y });
+            particles.push(new Particle(x, y, flowGraphics));
+          }
+        }
+      }
+    }
+
     yoff = 0;
     for (var y = 0; y < rows; y++) {
       var xoff = 0;
@@ -49,31 +71,37 @@ export const sketch = (p5: P5) => {
       particles[i].follow(flowfield);
       particles[i].update();
       particles[i].show();
-    }
 
-    p5.image(flowGraphics, 0, 0);
-
-    for (
-      let x = 50 + circleRadius * 2;
-      x < p5.width - 50 - circleRadius;
-      x += circleRadius * 3.5
-    ) {
-      for (
-        let y = 50 + circleRadius;
-        y < p5.height - 50 - circleRadius;
-        y += circleRadius
+      const particlePosition = particles[i].getPosition();
+      if (
+        deadCells.some(
+          (cell) =>
+            cell.x <= particlePosition.x + 1 &&
+            cell.x > particlePosition.x - 1 &&
+            cell.y <= particlePosition.y + 1 &&
+            cell.y > particlePosition.y - 1
+        )
       ) {
-        if (!deadCells.some((cell) => cell.x === x && cell.y === y)) {
-          drawHexagon(x, y);
-          if (
-            p5.frameCount > 200 &&
-            p5.noise(x, y, znoise) > (0.64 * 400) / p5.frameCount
-          ) {
-            deadCells.push({ x, y });
-            particles.push(new Particle(x, y, flowGraphics));
-          }
+        console.log("Reviving cell");
+        const revivingCellIndex = deadCells.findIndex(
+          (cell) =>
+            cell.x <= particlePosition.x + 1 &&
+            cell.x > particlePosition.x - 1 &&
+            cell.y <= particlePosition.y + 1 &&
+            cell.y > particlePosition.y - 1
+        );
+
+        if (p5.random(1) > 0.67) {
+          deadCells.splice(revivingCellIndex, 1);
+          particles.splice(i, 1);
         }
       }
+    }
+
+    if (this.frameCount % 1000 === 0) {
+      deadCells = [];
+      particles = [];
+      flowGraphics.background(255);
     }
 
     znoise += 0.01;
@@ -161,6 +189,10 @@ export const sketch = (p5: P5) => {
     updatePrev() {
       this.prevPos.x = this.pos.x;
       this.prevPos.y = this.pos.y;
+    }
+
+    getPosition() {
+      return { x: this.pos.x, y: this.pos.y };
     }
   }
 };
