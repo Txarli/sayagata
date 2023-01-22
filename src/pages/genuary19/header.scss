@@ -1,0 +1,66 @@
+.header {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px;
+  width: 60%;
+
+  background-color: whitesmoke;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+
+  &.hidden {
+    transition: visibility 0.5s, opacity 0.5s;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &.hidden:hover {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.hover-visibility {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+}
+
+.hover-visibility:hover + .hidden {
+  visibility: visible;
+  opacity: 1;
+}
+
+.control-button {
+  border: 0;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  &:hover {
+    color: grey;
+  }
+
+  svg {
+    width: 2em;
+    height: 2em;
+  }
+}
+
+.title {
+  margin-bottom: 16px;
+
+  font-size: 3em;
+  font-weight: bold;
+}
