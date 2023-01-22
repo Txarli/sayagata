@@ -9,10 +9,6 @@ export function useP5Sketch(sketch: (p5: P5) => void) {
       return;
     }
 
-    if (typeof window === "undefined") {
-      return;
-    }
-
     const p5 = new P5(sketch, ref.current);
     return p5.remove;
   }, []);
