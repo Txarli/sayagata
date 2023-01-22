@@ -7,10 +7,10 @@ import { HeadProps, PageProps } from "gatsby";
 
 const Component = loadable(() => import("../../sketches/Genuary18"));
 
-const Page: React.FC<PageProps> = () => {
+const Page: React.FC<PageProps> = ({ location }) => {
   return (
     <>
-      <Header />
+      <Header pathname={location.pathname} />
 
       <Component />
     </>

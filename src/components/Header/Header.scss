@@ -72,3 +72,9 @@
   font-size: 3em;
   font-weight: bold;
 }
+
+.buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

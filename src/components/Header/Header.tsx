@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import PinIcon from "./icons/pin.svg";
 import PinOffIcon from "./icons/pin-off.svg";
+import RandomIcon from "./icons/random.svg";
 
 import "./Header.scss";
+import { useInternalPaths } from "../RandomPageRedirect/useInternalPaths";
+import { navigate } from "gatsby";
 
-export const Header: React.FC = () => {
+interface Props {
+  pathname?: string;
+}
+
+export const Header: React.FC<Props> = ({ pathname }) => {
   const [isPinned, setIsPinned] = useState(false);
+  const paths = useInternalPaths();
 
   return (
     <>
@@ -18,7 +26,7 @@ export const Header: React.FC = () => {
           </p>
         </div>
 
-        <div aria-hidden>
+        <div className="buttons-wrapper" aria-hidden>
           <button
             type="button"
             className="control-button"
@@ -28,8 +36,30 @@ export const Header: React.FC = () => {
           >
             {isPinned ? <PinIcon /> : <PinOffIcon />}
           </button>
+
+          <button
+            type="button"
+            className="control-button"
+            onClick={handleRandomClick}
+            title="Go to a random design"
+            tabIndex={-1}
+          >
+            {<RandomIcon />}
+          </button>
         </div>
       </header>
     </>
   );
+
+  function handleRandomClick() {
+    const pathsExcludin404PagesOrHome = paths.filter(
+      (path) => !(/404/.test(path) || /^\/$/.test(path)) && path !== pathname
+    );
+    const randomPath =
+      pathsExcludin404PagesOrHome[
+        Math.floor(Math.random() * pathsExcludin404PagesOrHome.length)
+      ];
+    console.log("going to", randomPath);
+    navigate(randomPath);
+  }
 };
