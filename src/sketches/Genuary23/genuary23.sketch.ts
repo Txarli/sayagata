@@ -20,7 +20,7 @@ export const sketch = (p5: P5) => {
     p5.noFill();
 
     for (let x = circleDiameter / 2; x < p5.width; x += circleDiameter) {
-      for (let y = circleDiameter / 2; y < p5.width; y += circleDiameter) {
+      for (let y = circleDiameter / 2; y < p5.height; y += circleDiameter) {
         for (let d = circleOffset; d < circleDiameter * 2; d += circleOffset) {
           if (x % 3 === 0 && y % 3 === 0) {
             p5.stroke(cyan);
