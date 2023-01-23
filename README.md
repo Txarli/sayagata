@@ -1,11 +1,4 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal TypeScript starter
-</h1>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/98e9a56b-70ed-4f1c-a8f9-f58a986e35fc/deploy-status)](https://app.netlify.com/sites/polite-cat-278133/deploys)
 
 ## 🚀 Quick start
 
