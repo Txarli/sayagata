@@ -82,7 +82,6 @@ export const sketch = (p5: P5) => {
             cell.y > particlePosition.y - 1
         )
       ) {
-        console.log("Reviving cell");
         const revivingCellIndex = deadCells.findIndex(
           (cell) =>
             cell.x <= particlePosition.x + 1 &&

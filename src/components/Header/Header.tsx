@@ -59,7 +59,6 @@ export const Header: React.FC<Props> = ({ pathname }) => {
       pathsExcludin404PagesOrHome[
         Math.floor(Math.random() * pathsExcludin404PagesOrHome.length)
       ];
-    console.log("going to", randomPath);
     navigate(randomPath);
   }
 };
