@@ -29,6 +29,7 @@ export const sketch = (p5: P5) => {
           } else {
             p5.stroke(yellow);
           }
+          p5.point(x, y);
           p5.circle(x, y, d);
 
           const noise = p5.noise(x, y, zoffset);
@@ -47,6 +48,7 @@ export const sketch = (p5: P5) => {
           } else {
             p5.stroke(221, 0, 221, noise * 255);
           }
+          p5.point(movement + x, movement + y);
           p5.circle(movement + x, movement + y, d);
         }
       }
