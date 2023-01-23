@@ -1,5 +1,5 @@
 import React from "react";
-import { P5Sketch } from "../components/P5Sketch";
+import { P5Sketch } from "../../components/P5Sketch";
 
 import { sketch } from "./genuary19.sketch";
 
