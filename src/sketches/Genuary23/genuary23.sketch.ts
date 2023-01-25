@@ -19,15 +19,17 @@ export const sketch = (p5: P5) => {
     p5.strokeWeight(1);
     p5.noFill();
 
-    const startX = (p5.width - p5.floor(p5.width / circleDiameter) * circleDiameter) / 2;
-    const startY = (p5.height - p5.floor(p5.height / circleDiameter) * circleDiameter) / 2;
+    const startX =
+      (p5.width - p5.floor(p5.width / circleDiameter) * circleDiameter) / 2;
+    const startY =
+      (p5.height - p5.floor(p5.height / circleDiameter) * circleDiameter) / 2;
 
     for (let x = startX; x < p5.width; x += circleDiameter) {
       for (let y = startY; y < p5.height; y += circleDiameter) {
         for (let d = circleOffset; d < circleDiameter * 2; d += circleOffset) {
-          if (x % 3 === 0 && y % 3 === 0) {
+          if ((x - startX) % 3 === 0 && (y - startY) % 3 === 0) {
             p5.stroke(cyan);
-          } else if (x % 3 === 0) {
+          } else if ((x - startX) % 3 === 0) {
             p5.stroke(magenta);
           } else {
             p5.stroke(yellow);
@@ -44,9 +46,9 @@ export const sketch = (p5: P5) => {
             1.75 * circleOffset
           );
 
-          if (x % 3 === 0 && y % 3 === 0) {
+          if ((x - startX) % 3 === 0 && (y - startY) % 3 === 0) {
             p5.stroke(0, 221, 221, noise * 255);
-          } else if (x % 3 === 0) {
+          } else if ((x - startX) % 3 === 0) {
             p5.stroke(221, 221, 0, noise * 255);
           } else {
             p5.stroke(221, 0, 221, noise * 255);
