@@ -52,4 +52,8 @@ export const sketch = (p5: P5) => {
     angle += 0.02;
     zoff += 0.04;
   };
+
+  p5.windowResized = function () {
+    p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+  };
 };
