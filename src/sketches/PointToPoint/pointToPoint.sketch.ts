@@ -35,7 +35,7 @@ export const sketch = (p5: P5) => {
       };
     });
 
-    for (let i = 0; i < p5.floor(grid.length / 10); i++) {
+    for (let i = 0; i < p5.floor(grid.length / 10) + 1; i++) {
       const index1 = p5.floor(p5.random(0, grid.length - 1));
       const index2 = p5.floor(p5.random(0, grid.length - 1));
       const velocity = Vector.sub(
