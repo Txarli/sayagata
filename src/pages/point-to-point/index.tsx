@@ -9,7 +9,7 @@ const Component = loadable(() => import("../../sketches/PointToPoint"));
 export const Head: React.FC<HeadProps> = ({ location }) => (
   <SEO
     title="Point to point"
-    description="A grid of points and their connections."
+    description="A grid of points colliding and changing their colors."
     pathname={location.pathname}
   />
 );
