@@ -82,7 +82,11 @@ export const sketch = (p5: P5) => {
       }
 
       if (position.y < stroke / 2) {
-        grid[index].position = p5.createVector(position.x, stroke / 2 + 2);
+        const correctionFactor = 1.01;
+        grid[index].position = p5.createVector(
+          position.x,
+          stroke / 2 + correctionFactor
+        );
 
         const vertical = p5.createVector(0, 1);
         velocity.reflect(vertical);
