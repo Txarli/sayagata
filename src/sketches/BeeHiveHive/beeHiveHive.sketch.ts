@@ -6,9 +6,9 @@ export const sketch = (p5: P5) => {
   let znoise = 0;
 
   p5.setup = function () {
-    p5.createCanvas(680, 680);
+    p5.createCanvas(p5.windowWidth, p5.windowHeight);
 
-    layerNumber = p5.width / (4 * circleRadius) - 1;
+    layerNumber = 700 / (4 * circleRadius) - 1;
   };
 
   p5.draw = function () {
@@ -27,7 +27,9 @@ export const sketch = (p5: P5) => {
       }
     }
 
-    znoise += 0.01;
+    drawFrontierHexagon(0, 0);
+
+    znoise += 0.006;
   };
 
   function drawHexagon(x: number, y: number) {
@@ -35,8 +37,6 @@ export const sketch = (p5: P5) => {
     const rotation = p5.HALF_PI;
     p5.stroke(randomColor);
     p5.fill(randomColor);
-
-    p5.point(x, y);
 
     p5.beginShape();
     for (
@@ -51,6 +51,26 @@ export const sketch = (p5: P5) => {
         (circleRadius * 2) / 5,
         circleRadius * 1.4
       );
+      const sx = x + p5.cos(angle) * radius;
+      const sy = y + p5.sin(angle) * radius;
+      p5.vertex(sx, sy);
+    }
+    p5.endShape(p5.CLOSE);
+  }
+
+  function drawFrontierHexagon(x: number, y: number) {
+    const randomColor = p5.color(105, 105, 105);
+    const rotation = 0;
+    p5.stroke(randomColor);
+    p5.noFill();
+
+    p5.beginShape();
+    for (
+      let angle = rotation;
+      angle < p5.TWO_PI + rotation;
+      angle += p5.TWO_PI / 6
+    ) {
+      const radius = 350;
       const sx = x + p5.cos(angle) * radius;
       const sy = y + p5.sin(angle) * radius;
       p5.vertex(sx, sy);
