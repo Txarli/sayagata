@@ -1,19 +1,26 @@
-import P5, { Vector } from "p5";
+import P5, { Vector, Element } from "p5";
 
 export const sketch = (p5: P5) => {
-  const circleRadius = 27;
+  let circleRadius = 27;
   let layerNumber: number;
   let znoise = 0;
+
+  let radiusSlider: Element;
 
   p5.setup = function () {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
 
-    layerNumber = 700 / (4 * circleRadius) - 1;
+    radiusSlider = p5.createSlider(5, 60, 25, 1);
+    radiusSlider.position(p5.width - 200, p5.height - 50);
+    radiusSlider.style("width", "80px");
   };
 
   p5.draw = function () {
     p5.background(255);
     p5.translate(p5.width / 2, p5.height / 2);
+
+    circleRadius = radiusSlider.value() as number;
+    layerNumber = 700 / (4 * circleRadius) - 1;
 
     drawHexagon(0, 0);
 
