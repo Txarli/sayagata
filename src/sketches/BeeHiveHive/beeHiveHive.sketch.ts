@@ -1,7 +1,7 @@
 import P5, { Vector, Element, Renderer } from "p5";
 
 export const sketch = (p5: P5) => {
-  let circleRadius = 27;
+  let circleRadius: number;
   let layerNumber: number;
   let znoise = 0;
 
@@ -11,7 +11,7 @@ export const sketch = (p5: P5) => {
   p5.setup = function () {
     canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
 
-    radiusSlider = p5.createSlider(5, 60, 25, 0.5);
+    radiusSlider = p5.createSlider(5, 60, 41, 0.5);
     radiusSlider.position(p5.width - 200, p5.height - 50);
     radiusSlider.style("width", "80px");
   };
@@ -44,7 +44,7 @@ export const sketch = (p5: P5) => {
 
   p5.keyPressed = function () {
     if (p5.keyCode === 32) {
-      p5.save(canvas, "beeHiveHive.png");
+      p5.save(canvas, `beeHiveHive-${p5.millis()}.png`);
     }
   };
 
