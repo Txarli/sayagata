@@ -1,7 +1,7 @@
 import P5, { Vector, Element, Renderer } from "p5";
 
 export const sketch = (p5: P5) => {
-  let circleRadius: number;
+  let hexagonRadius: number;
   let layerNumber: number;
   let znoise = 0;
 
@@ -18,19 +18,19 @@ export const sketch = (p5: P5) => {
 
   p5.draw = function () {
     p5.background(255);
-    p5.text(`hexagon radius: ${circleRadius}`, p5.width - 200, p5.height - 60);
+    p5.text(`hexagon radius: ${hexagonRadius}`, p5.width - 200, p5.height - 60);
 
     p5.translate(p5.width / 2, p5.height / 2);
 
-    circleRadius = radiusSlider.value() as number;
-    layerNumber = p5.floor((700 - circleRadius) / (4 * circleRadius));
+    hexagonRadius = radiusSlider.value() as number;
+    layerNumber = p5.floor((700 - hexagonRadius) / (4 * hexagonRadius));
 
     drawHexagon(0, 0);
 
     for (let layer = 1; layer < layerNumber; layer++) {
       for (let angle = 0; angle < p5.TWO_PI; angle += p5.TWO_PI / (6 * layer)) {
         const r =
-          (2 * layer * circleRadius) /
+          (2 * layer * hexagonRadius) /
           p5.cos((1 / 3) * p5.asin(p5.sin(3 * angle - p5.HALF_PI)));
         const vector = Vector.fromAngle(angle).setMag(r);
         drawHexagon(vector.x, vector.y);
@@ -69,8 +69,8 @@ export const sketch = (p5: P5) => {
         p5.noise(p5.width + x / 100, p5.height + y / 100, znoise),
         0,
         1,
-        (circleRadius * 2) / 5,
-        circleRadius * 1.4
+        (hexagonRadius * 2) / 5,
+        hexagonRadius * 1.4
       );
       const sx = x + p5.cos(angle) * radius;
       const sy = y + p5.sin(angle) * radius;
