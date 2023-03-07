@@ -54,7 +54,7 @@ export const sketch = (p5: P5) => {
   };
 
   function drawHexagon(x: number, y: number) {
-    const randomColor = p5.color(105, 105, 105);
+    const randomColor = p5.color(0, 0, 0);
     const rotation = p5.HALF_PI;
     p5.stroke(randomColor);
     p5.fill(randomColor);
