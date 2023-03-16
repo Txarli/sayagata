@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .header {
   position: absolute;
@@ -12,9 +12,10 @@
   padding: 16px;
   width: 100%;
 
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 
-  background-color: whitesmoke;
+  background-color: rgba(245, 245, 245, 0.8);
+  backdrop-filter: blur(5px);
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   border-bottom: 2px solid black;
