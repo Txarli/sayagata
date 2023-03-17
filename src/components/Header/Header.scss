@@ -13,14 +13,12 @@
   width: 100%;
 
   font-family: "Montserrat", sans-serif;
+  color: #ffffff;
 
-  background-color: rgba(245, 245, 245, 0.8);
+  background-color: rgba(20, 20, 20, 0.8);
   backdrop-filter: blur(5px);
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
-  border-bottom: 2px solid black;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
 
   &.hidden {
     transition: visibility 0.5s, opacity 0.5s;
@@ -55,10 +53,13 @@
   border: 0;
   background-color: transparent;
 
+  color: #ffffff;
+
   cursor: pointer;
+  transition: 0.3s;
 
   &:hover {
-    color: grey;
+    color: rgb(187, 32, 21);
   }
 
   svg {
