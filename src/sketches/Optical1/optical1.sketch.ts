@@ -1,7 +1,7 @@
 import P5 from "p5";
 
 export const sketch = (p5: P5) => {
-  const tileSize = 150;
+  const tileSize = 245;
   const ondulationAmplitude = 3;
 
   let xStartOffset: number;
@@ -20,7 +20,8 @@ export const sketch = (p5: P5) => {
     p5.background(255);
 
     p5.fill(0);
-    let isEven = false;
+    let row = 0;
+    let column = 0;
     for (
       let y = tileSize / 2 - yStartOffset;
       y < p5.height + tileSize / 2;
@@ -31,12 +32,18 @@ export const sketch = (p5: P5) => {
         x < p5.width + tileSize / 2;
         x += tileSize
       ) {
-        if (isEven) {
+        if (
+          (row % 2 === 0 && column % 2 !== 0) ||
+          (row % 2 !== 0 && column % 2 === 0)
+        ) {
           drawOndulatedSquare(x, y);
         }
 
-        isEven = !isEven;
+        column++;
       }
+
+      column = 0;
+      row++;
     }
   };
 
