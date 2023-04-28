@@ -63,21 +63,10 @@ export const sketch = (p5: P5) => {
     p5.endShape(p5.CLOSE);
 
     p5.fill(255);
-    p5.strokeWeight(0);
+    p5.strokeWeight(4);
+    p5.stroke(255);
 
-    p5.beginShape();
-    p5.vertex(-tileSize / 2, -tileSize / 2);
-
-    for (let x = -tileSize / 2; x <= tileSize / 2; x += 3) {
-      p5.vertex(x, x - 5);
-    }
-
-    p5.vertex(tileSize / 2, tileSize / 2);
-
-    for (let x = tileSize / 2; x >= -tileSize / 2; x -= 3) {
-      p5.vertex(x, x + 5);
-    }
-    p5.endShape(p5.CLOSE);
+    p5.line(-tileSize / 2, -tileSize / 2, tileSize / 2, tileSize / 2);
 
     p5.pop();
   }
