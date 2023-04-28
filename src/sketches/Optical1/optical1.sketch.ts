@@ -7,13 +7,13 @@ export const sketch = (p5: P5) => {
   let xStartOffset: number;
   let yStartOffset: number;
 
+  let znoise = 0;
+
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
 
     xStartOffset = p5.random(0, 20);
     yStartOffset = p5.random(0, 20);
-
-    p5.noLoop();
   };
 
   p5.draw = () => {
@@ -37,7 +37,10 @@ export const sketch = (p5: P5) => {
           (row % 2 !== 0 && column % 2 === 0)
         ) {
           drawOndulatedSquare(x, y);
-          drawDiagonalZigzag(x, y);
+
+          for (let i = x - tileSize; i <= x + tileSize; i += 45) {
+            drawDiagonalZigzag(i, y);
+          }
         }
 
         column++;
@@ -46,6 +49,8 @@ export const sketch = (p5: P5) => {
       column = 0;
       row++;
     }
+
+    znoise += 0.001;
   };
 
   p5.windowResized = function () {
@@ -68,14 +73,18 @@ export const sketch = (p5: P5) => {
 
   function drawDiagonalZigzag(x: number, y: number) {
     let start = p5.createVector(x - tileSize / 2, y - tileSize / 2);
-    const step = p5.createVector(10, 10);
+    const step = p5.createVector(15, 15);
     const zig = Vector.rotate(step, p5.PI / 3);
     const zag = Vector.rotate(step, -p5.PI / 3);
     p5.stroke(255);
-    p5.strokeWeight(4);
+    p5.strokeWeight(7);
 
     let isZig = false;
-    for (let x = 0; x <= tileSize - 10; x += 10) {
+    while (start.x < x + tileSize && start.y < y + tileSize) {
+      step.setMag(isZig ? 9 : 22);
+      const zigzagMag = p5.map(p5.noise(start.x, start.y, znoise), 0, 1, 8, 15);
+      zig.setMag(zigzagMag);
+      zag.setMag(zigzagMag);
       const myVector = Vector.add(step, isZig ? zig : zag);
       const vectorToDraw = Vector.add(myVector, start);
       p5.line(start.x, start.y, vectorToDraw.x, vectorToDraw.y);
