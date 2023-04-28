@@ -1,4 +1,4 @@
-import P5 from "p5";
+import P5, { Vector } from "p5";
 
 export const sketch = (p5: P5) => {
   const tileSize = 245;
@@ -37,6 +37,7 @@ export const sketch = (p5: P5) => {
           (row % 2 !== 0 && column % 2 === 0)
         ) {
           drawOndulatedSquare(x, y);
+          drawDiagonalZigzag(x, y);
         }
 
         column++;
@@ -62,13 +63,26 @@ export const sketch = (p5: P5) => {
     drawHorizontal(tileSize / 2, tileSize / 2, -tileSize / 2);
     p5.endShape(p5.CLOSE);
 
-    p5.fill(255);
-    p5.strokeWeight(4);
-    p5.stroke(255);
-
-    p5.line(-tileSize / 2, -tileSize / 2, tileSize / 2, tileSize / 2);
-
     p5.pop();
+  }
+
+  function drawDiagonalZigzag(x: number, y: number) {
+    let start = p5.createVector(x - tileSize / 2, y - tileSize / 2);
+    const step = p5.createVector(10, 10);
+    const zig = Vector.rotate(step, p5.PI / 3);
+    const zag = Vector.rotate(step, -p5.PI / 3);
+    p5.stroke(255);
+    p5.strokeWeight(4);
+
+    let isZig = false;
+    for (let x = 0; x <= tileSize - 10; x += 10) {
+      const myVector = Vector.add(step, isZig ? zig : zag);
+      const vectorToDraw = Vector.add(myVector, start);
+      p5.line(start.x, start.y, vectorToDraw.x, vectorToDraw.y);
+
+      start = vectorToDraw;
+      isZig = !isZig;
+    }
   }
 
   function drawVerticalOndulatedLine(x: number, yStart: number, yEnd: number) {
