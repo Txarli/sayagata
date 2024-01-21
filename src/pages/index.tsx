@@ -1,8 +1,7 @@
-import * as React from "react";
-import type { HeadFC } from "gatsby";
-import { RandomPageRedirect } from "../components/RandomPageRedirect";
-import { SEO } from "../components/SEO";
+import React from "react";
 
-export default RandomPageRedirect;
+const Index = () => {
+  return <h1>Sayagata</h1>;
+};
 
-export const Head: HeadFC = () => <SEO />;
+export default Index;

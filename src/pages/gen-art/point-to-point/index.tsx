@@ -1,15 +1,15 @@
 import React from "react";
 
 import loadable from "@loadable/component";
-import { SEO } from "../../components/SEO";
+import { SEO } from "../../../components/SEO";
 import { HeadProps } from "gatsby";
 
-const Component = loadable(() => import("../../sketches/Genuary23"));
+const Component = loadable(() => import("../../../sketches/PointToPoint"));
 
 export const Head: React.FC<HeadProps> = ({ location }) => (
   <SEO
-    title="More Moiré"
-    description="A sketch created for the Genuary 2022 23th day with the prompt: More Moiré"
+    title="Point to point"
+    description="A grid of points colliding and changing their colors."
     pathname={location.pathname}
   />
 );

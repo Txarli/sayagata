@@ -1,10 +1,10 @@
 import React from "react";
 
 import loadable from "@loadable/component";
-import { SEO } from "../../components/SEO";
+import { SEO } from "../../../components/SEO";
 import { HeadProps } from "gatsby";
 
-const Component = loadable(() => import("../../sketches/Genuary18"));
+const Component = loadable(() => import("../../../sketches/Genuary18"));
 
 export const Head: React.FC<HeadProps> = ({ location }) => (
   <SEO
