@@ -6,7 +6,10 @@ export const PageProvider: React.FC<
 > = ({ location, children }) => {
   return (
     <>
-      <Header pathname={location.pathname} />
+      {location.pathname !== "/photo" && (
+        <Header pathname={location.pathname} />
+      )}
+
       {children}
     </>
   );

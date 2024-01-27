@@ -1,0 +1,122 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  height: 100dvh;
+
+  color: #0a0c10;
+}
+
+.heroImageWrapper {
+  width: 66dvh;
+  height: auto;
+}
+
+.heroImage {
+  object-position: right;
+}
+
+.heroTextWrapper {
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroTitle {
+  margin-bottom: 16px;
+
+  font-family: "Hanken Grotesk", serif;
+  font-weight: 700;
+  font-size: 5.33vw;
+  text-transform: uppercase;
+}
+
+.heroDescription {
+  padding-left: 4vw;
+
+  font-family: "Inconsolata", sans-serif;
+  font-size: 2vw;
+}
+
+.sectionTitle {
+  margin-bottom: 32px;
+  margin-top: 16px;
+
+  font-family: "Hanken Grotesk", serif;
+  font-weight: 700;
+  font-size: 4.33vw;
+  text-transform: uppercase;
+}
+
+.imagesSection {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.baionaImagesWrapper {
+  display: grid;
+  gap: 24px;
+  grid-template-areas:
+    "tiobibo ."
+    "ibaia .";
+  grid-template-columns: 1fr 1fr;
+}
+
+.baionaTiobibo {
+  grid-area: tiobibo;
+}
+
+.baionaNoria {
+  grid-area: noria;
+}
+
+.baionaIbaia {
+  grid-area: ibaia;
+}
+
+.angeluImagesWrapper {
+  display: grid;
+  gap: 24px;
+  grid-template-areas:
+    "farua hesia"
+    "farua .";
+  grid-template-columns: 1fr 1fr;
+}
+
+.farua {
+  grid-area: farua;
+}
+
+.hesia {
+  grid-area: hesia;
+}
+
+.urrugnaImagesWrapper {
+  display: grid;
+  gap: 24px;
+  grid-template-areas:
+    "gaztelua gaztelua ."
+    "trenbidea kanposantoa kanposantoa"
+    "etxea etxea maite";
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gaztelua {
+  grid-area: gaztelua;
+}
+
+.trenbidea {
+  grid-area: trenbidea;
+}
+
+.maite {
+  grid-area: maite;
+}
+
+.kanposantoa {
+  grid-area: kanposantoa;
+}
+
+.etxea {
+  grid-area: etxea;
+}

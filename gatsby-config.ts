@@ -11,13 +11,12 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
+  trailingSlash: "never",
   plugins: [
     {
       resolve: "gatsby-plugin-google-gtag",
       options: {
-        trackingIds: [
-          "G-H6QS00R8JB", 
-        ],
+        trackingIds: ["G-H6QS00R8JB"],
         pluginConfig: {
           head: true,
         },
@@ -54,6 +53,25 @@ const config: GatsbyConfig = {
       resolve: "gatsby-plugin-html-attributes",
       options: {
         lang: "en",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-webfonts",
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Hanken Grotesk",
+              variants: ["400", "700"],
+              fontDisplay: "swap",
+            },
+            {
+              family: "Inconsolata",
+              variants: ["400", "700"],
+              fontDisplay: "swap",
+            },
+          ],
+        },
       },
     },
   ],
